@@ -22,7 +22,7 @@ stages:
     - task: Maven@3
       inputs:
         mavenPomFile: 'SFDC.parent/pom.xml'
-        goals: 'clean package initialize'
+        goals: 'clean package initialize docker:build'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         mavenVersionOption: 'Default'
@@ -40,5 +40,5 @@ stages:
         containerRegistry: 'Repo'
         repository: 'santosh1208/pepsico'
         command: 'push'
-        tags: 'app'
+        tags: 'app1'
 
