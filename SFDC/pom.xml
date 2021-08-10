@@ -13,7 +13,7 @@
   <properties>
     <skipTests>false</skipTests>
     <bw.Home>/bwce/2.6</bw.Home>
-    <docker.env.property.file>/home/tibco/git/devops/SFDC/docker-host-env-dev.properties</docker.env.property.file>
+    <docker.env.property.file>SFDC/docker-host-env-dev.properties</docker.env.property.file>
     <project.type>Docker</project.type>
     <failIfNoTests>false</failIfNoTests>
     <docker.property.file>docker-dev.properties</docker.property.file>
