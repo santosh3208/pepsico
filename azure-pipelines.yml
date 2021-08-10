@@ -3,30 +3,42 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
-
-pool:
-  vmImage: ubuntu-latest
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
     - task: DockerInstaller@0
       inputs:
         dockerVersion: '17.09.0-ce'
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Write your commands here
 
-- task: CmdLine@2
-  inputs:
-    script: |
-      echo Write your commands here
-      
-      docker version
-- task: Docker@2
-  inputs:
-    containerRegistry: 'Repo'
-    repository: 'santosh1208/pepsico'
-    command: 'push'
-    tags: 'app'
+          docker version
+    - task: Maven@3
+      inputs:
+        mavenPomFile: 'SFDC.parent/pom.xml'
+        goals: 'clean package initialize docker:build'
+        publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: false
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo Write your commands here
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+          docker images
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'Repo'
+        repository: 'santosh1208/pepsico'
+        command: 'push'
+        tags: 'app'
+
