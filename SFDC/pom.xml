@@ -41,7 +41,7 @@
         <configuration>
           <files>
             <file>${docker.property.file}</file>
-            <file>${docker.env.property.file}</file>
+            
           </files>
         </configuration>
       </plugin>
