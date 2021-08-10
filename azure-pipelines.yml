@@ -8,11 +8,10 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-  
-  steps:
-- task: DockerInstaller@0
-  inputs:
-    dockerVersion: '17.09.0-ce'
+    steps:
+    - task: DockerInstaller@0
+      inputs:
+        dockerVersion: '17.09.0-ce'
 
 - task: CmdLine@2
   inputs:
