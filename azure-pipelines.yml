@@ -22,7 +22,7 @@ stages:
     - task: Maven@3
       inputs:
         mavenPomFile: 'SFDC.parent/pom.xml'
-        goals: 'clean package initialize docker:build'
+        goals: 'clean package initialize'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         mavenVersionOption: 'Default'
