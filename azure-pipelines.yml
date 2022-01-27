@@ -40,5 +40,5 @@ stages:
         containerRegistry: 'Repo'
         repository: 'santosh1208/pepsico'
         command: 'push'
-        tags: 'app1'
+        tags: 'app2'
 
